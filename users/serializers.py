@@ -33,8 +33,8 @@ class RegisterSerializer(UserSerializer):
             'unique': 'User with that email already exists.'
         }
     )
-    first_name = serializers.CharField(required=True)
-    last_name = serializers.CharField(required=True)
+    first_name = serializers.CharField(required=False)
+    last_name = serializers.CharField(required=False)
     password = serializers.CharField(
         write_only=True,
         required=True,

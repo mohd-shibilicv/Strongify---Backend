@@ -1,5 +1,8 @@
 [build]
-builder = "nixpacks/python-nixpacks:latest"
+builder = "railway/python"
+
+[env]
+PYTHON_VERSION = "3.9"
 
 [deploy]
 startCommand = "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn password_generator.wsgi:application"

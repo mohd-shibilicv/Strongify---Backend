@@ -1,0 +1,5 @@
+[build]
+builder = "nixpacks/python-nixpacks:latest"
+
+[deploy]
+startCommand = "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn password_generator.wsgi:application"

@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.contrib.auth.hashers import make_password
 
 User = get_user_model()
 
@@ -22,6 +21,3 @@ class StoredPassword(models.Model):
     def __str__(self):
         return f'Password for user {self.user.first_name} {self.user.last_name} (created: {self.created_at})'
 
-    def save(self, *args, **kwargs):
-        self.password = make_password(self.password)
-        super().save(*args, **kwargs)

@@ -3,6 +3,7 @@ from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.settings import api_settings
 from django.contrib.auth.models import update_last_login
+from django.contrib.auth.hashers import make_password
 
 from django.core.validators import MinLengthValidator, RegexValidator
 
@@ -54,6 +55,13 @@ class RegisterSerializer(UserSerializer):
     class Meta:
         model = User
         fields = ['id', 'first_name', 'last_name', 'email', 'password']
+    
+    def create(self, validated_data):
+        password = validated_data.pop('password')
+        instance = super().create(validated_data)
+        instance.password = make_password(password)
+        instance.save()
+        return instance
 
 
 class LoginSerializer(TokenObtainPairSerializer):

@@ -13,7 +13,7 @@ class StoredPasswordViewSet(ModelViewSet):
     def get_queryset(self):
         queryset = StoredPassword.objects.filter(user=self.request.user)
         return queryset.order_by('-created_at')
-    
+
     def get_serializer_context(self):
         context = super().get_serializer_context()
         context['user_id'] = self.request.user.id

@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from django.contrib.auth.hashers import make_password
 
 from users.serializers import UserSerializer
 from passwords.models import StoredPassword
@@ -22,11 +21,8 @@ class StoredPasswordSerializer(serializers.ModelSerializer):
         if user_id:
             user = User.objects.get(id=user_id)
             validated_data['user'] = user
-        password = validated_data.pop('password')
-        instance = super().create(validated_data)
-        instance.password = make_password(password)
-        instance.save()
-        return instance
+        return super().create(validated_data)
+        
 
     def validate(self, data):
         user = self.context.get('request').user

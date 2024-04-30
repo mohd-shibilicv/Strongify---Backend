@@ -1,11 +1,14 @@
 {
-    "builds": [{
-        "src": "password_generator/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
-    }],
-    "routes": [{
-        "src": "/(.*)",
-        "dest": "password_generator/wsgi.py"
-    }]
+  "builds": [
+    {
+      "src": "password_generator/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "password_generator/wsgi.py"
+    }
+  ]
 }

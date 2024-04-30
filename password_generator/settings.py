@@ -22,7 +22,12 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".vercel.app"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "api-strongify.up.railway.app",
+    "strongify-frontend.vercel.app",
+]
 
 # Application definition
 
@@ -69,6 +74,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:5173",
     "http://127.0.0.1:8000",
+    "https://api-strongify.up.railway.app",
+    "http://api-strongify.up.railway.app",
+    "https://strongify-frontend.vercel.app",
+    "http://strongify-frontend.vercel.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -76,6 +85,10 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:5173",
     "http://127.0.0.1:8000",
+    "https://api-strongify.up.railway.app",
+    "http://api-strongify.up.railway.app",
+    "https://strongify-frontend.vercel.app",
+    "http://strongify-frontend.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
